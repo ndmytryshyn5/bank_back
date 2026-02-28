@@ -1,0 +1,13 @@
+services:
+  python:
+    build: .
+    container_name: bankrupt_back
+    env_file:
+      - .env/var.env
+    volumes:
+    - .:/app
+    ports:
+    - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
