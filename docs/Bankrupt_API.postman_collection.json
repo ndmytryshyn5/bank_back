@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "99bbee35-fa59-4dd7-83a3-28f2611cc1e8",
+		"name": "Bankrupt_API",
+		"description": "Some operations needed user to be logged.\n\nIf password was reseted, change password in login process\n\nSome of variables in body are non-consistent like card number or verification codes which are depends on database or random generation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43912649",
+		"_collection_link": "https://bunkruptxd.postman.co/workspace/BunkruptXD-Workspace~10ef5b7f-38a8-449c-842e-983570b71f3c/collection/43912649-99bbee35-fa59-4dd7-83a3-28f2611cc1e8?action=share&source=collection_link&creator=43912649"
+	},
+	"item": [
+		{
+			"name": "Authentification and account managment route",
+			"item": [
+				{
+					"name": "[AUTH] Pre-Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@localhost.me\",\r\n    \"phone_number\": \"+99111222333\",\r\n    \"social_security\": \"111-22-333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/register",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] Registration complete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Name\",\r\n    \"last_name\": \"Surname\",\r\n    \"email\": \"user@localhost.me\",\r\n    \"phone_number\": \"+99111222333\",\r\n    \"date_of_birth\": \"1999-01-05\",\r\n    \"social_security\": \"111-22-333\",\r\n    \"address\": \"Street\",\r\n    \"city\": \"City\",\r\n    \"state\": \"State\",\r\n    \"post_code\": \"11-222\",\r\n    \"password\": \"p455w0rd\",\r\n    \"verification_code\": \"14PP0DW8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/verify-email",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/me",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/logout",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] 2FA login request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@localhost.me\",\r\n    \"password\": \"p455w0rd2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/2fa/request",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"2fa",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] 2FA login confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@localhost.me\",\r\n    \"twofa_code\": \"56M88ECG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/2fa/confirm",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"2fa",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] Reset password request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@localhost.me\",\r\n    \"phone_number\": \"+99111222333\",\r\n    \"social_security\": \"111-22-333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/reset",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[AUTH] Reset password confirm",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"Zj5L3gJWppH0aFR3fGEvF4oimgnR2rSWvauLDkTast0\",\r\n    \"new_password\": \"p455w0rd2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/auth/reset",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"auth",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Miscallenious route",
+			"item": [
+				{
+					"name": "[MISC] Cleanup unverified users routine",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/cleanup-unverified",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"cleanup-unverified"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cards and transfer route",
+			"item": [
+				{
+					"name": "[CARD] Create first",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/card/create",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card",
+								"create"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[CARD] Create second",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/card/create",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card",
+								"create"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[CARD] Get cards list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/card",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[CARD] Get card data by 4-digits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/card/1354",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card",
+								"1354"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[CARD] Card deleting",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"card_number\": \"1663489435925662\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/card/delete",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card",
+								"delete"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[CARD] Card transfering",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from_card_number\": \"1663489435925662\",\r\n    \"to_card_number\": \"0953327295777565\",\r\n    \"amount\": 50.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/card/transfer",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card",
+								"transfer"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[CARD] Card history",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"card_number\": \"0953327295777565\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/card/history",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"card",
+								"history"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Savings route",
+			"item": [
+				{
+					"name": "[SAVINGS] Create saving account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Dream\",\r\n    \"goal\": 500.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/savings/create",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"savings",
+								"create"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[SAVINGS] Get saving accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/savings/",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"savings",
+								""
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[SAVINGS] TopUp saving account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20.0,\r\n    \"saving_account_id\": 2,\r\n    \"card_id\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/savings/topUp",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"savings",
+								"topUp"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[SAVINGS] Decrease saving account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 220.0,\r\n    \"saving_account_id\": 2,\r\n    \"card_id\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/savings/decrease",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"savings",
+								"decrease"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[SAVINGS] Delete saving account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"saving_account_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/savings/delete",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"savings",
+								"delete"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bills route",
+			"item": [
+				{
+					"name": "[BILLS] Bill create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Parking fine\",\r\n    \"amount\": 40.0,\r\n    \"due_date\": \"2025-06-30T23:59:59\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/bills/create",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"bills",
+								"create"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[BILLS] Get list of bills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_link}}/bills/",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"bills",
+								""
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				},
+				{
+					"name": "[BILLS] Pay a bill",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bill_id\": 6,\r\n    \"card_number\": \"0953327295777565\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_link}}/bills/pay",
+							"host": [
+								"{{api_link}}"
+							],
+							"path": [
+								"bills",
+								"pay"
+							]
+						},
+						"description": "User must be logged into account to perform this option"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "api_link",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

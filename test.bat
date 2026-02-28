@@ -1,0 +1,1 @@
+pytest tests/test_main.py -v -s --html=docs/last_report.html --capture=tee-sys
