@@ -65,7 +65,6 @@ All dependencies are listed in [requirements.txt](requirements.txt)
 
 ---
 
-
 ## Launching
 
 ### Deployment (Render)
